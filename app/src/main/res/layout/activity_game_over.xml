@@ -16,21 +16,26 @@
             android:textStyle="bold"
             android:layout_marginBottom="16dp" />
 
-    <!-- Score Anzeige -->
+    <!-- Score und Highscore Anzeige -->
     <TextView
             android:id="@+id/scoreTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Dein Score: 0"
+            android:text="Dein Score: 0\nHighscore: 0"
             android:textSize="24sp"
+            android:gravity="center"
             android:layout_marginBottom="32dp" />
 
     <!-- Zurück zum Hauptmenü Button -->
     <Button
+            style="@style/Widget.Material3.Button.ElevatedButton"
+
             android:id="@+id/buttonMainMenu"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:text="Zurück zum Hauptmenü"
+
+            android:textColor="@color/black"
             android:textSize="18sp" />
 
 </LinearLayout>

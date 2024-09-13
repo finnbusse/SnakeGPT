@@ -15,7 +15,7 @@ class GameView @JvmOverloads constructor(
 ) : View(context, attrs) {
 
     private val handler = Handler(Looper.getMainLooper())
-    private val updateDelay = 300L  // Aktualisierung alle 300 Millisekunden
+    private val updateDelay = 300L  // Aktualisierung alle 150 Millisekunden für flüssigere Bewegung
     private var snake = mutableListOf<Pair<Int, Int>>()
     private var direction = Direction.RIGHT
     private var apple = Pair(5, 5)
@@ -24,9 +24,10 @@ class GameView @JvmOverloads constructor(
     private var score = 0
     private var isGameOver = false
 
-    private val paintSnake = Paint().apply { color = Color.GREEN }
+    private val paintSnake = Paint().apply { color = Color.BLUE } // Schlange ist jetzt Blau
     private val paintApple = Paint().apply { color = Color.RED }
-    private val paintBackground = Paint().apply { color = Color.BLACK }
+    private val paintLightGreen = Paint().apply { color = Color.parseColor("#A8D5BA") }
+    private val paintDarkGreen = Paint().apply { color = Color.parseColor("#6AA77D") }
 
     private var scoreChangeListener: OnScoreChangeListener? = null
 
@@ -83,6 +84,7 @@ class GameView @JvmOverloads constructor(
             newHead.second < 0 || newHead.second >= numCells) {
             isGameOver = true
             scoreChangeListener?.onGameOver()
+            handler.removeCallbacks(updateRunnable)
             return
         }
 
@@ -90,6 +92,7 @@ class GameView @JvmOverloads constructor(
         if (snake.contains(newHead)) {
             isGameOver = true
             scoreChangeListener?.onGameOver()
+            handler.removeCallbacks(updateRunnable)
             return
         }
 
@@ -103,12 +106,6 @@ class GameView @JvmOverloads constructor(
         } else {
             snake.removeAt(snake.size - 1)
         }
-
-        // Am Ende der update() Methode
-        if (isGameOver) {
-            handler.removeCallbacks(updateRunnable)
-        }
-
     }
 
     private fun generateApple() {
@@ -119,12 +116,29 @@ class GameView @JvmOverloads constructor(
         apple = newApple
     }
 
+    fun getScore(): Int {
+        return score
+    }
+
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
         cellSize = width / numCells
 
-        // Hintergrund zeichnen
-        canvas.drawRect(0f, 0f, width.toFloat(), height.toFloat(), paintBackground)
+        // Hintergrund zeichnen als schachbrettartiges Muster
+        for (i in 0 until numCells) {
+            for (j in 0 until numCells) {
+                val left = i * cellSize.toFloat()
+                val top = j * cellSize.toFloat()
+                val right = left + cellSize.toFloat()
+                val bottom = top + cellSize.toFloat()
+
+                if ((i + j) % 2 == 0) {
+                    canvas.drawRect(left, top, right, bottom, paintLightGreen)
+                } else {
+                    canvas.drawRect(left, top, right, bottom, paintDarkGreen)
+                }
+            }
+        }
 
         // Schlange zeichnen
         for (segment in snake) {
@@ -147,9 +161,4 @@ class GameView @JvmOverloads constructor(
         super.onDetachedFromWindow()
         handler.removeCallbacks(updateRunnable)
     }
-
-    fun getScore(): Int {
-        return score
-    }
-
 }

@@ -1,74 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:id="@+id/parentLayout"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="vertical"
-              android:background="#FFFFFF">
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:id="@+id/gameContainer"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent">
 
     <!-- Punktestand -->
     <TextView
             android:id="@+id/scoreTextView"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Punkte: 0"
             android:textSize="24sp"
             android:gravity="center"
-            android:padding="16dp" />
+            android:padding="16dp"
+            android:layout_gravity="top|center_horizontal" />
 
     <!-- Spielfeld -->
     <de.finnbusse.snake.GameView
             android:id="@+id/gameView"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:background="#000000" />
+            android:layout_height="match_parent"
+            android:layout_marginTop="50dp" /> <!-- Hintergrundfarbe entfernt -->
 
-    <!-- Steuerelemente -->
-    <LinearLayout
-            android:layout_width="match_parent"
+    <!-- Hinweis für Swipe-Steuerung -->
+    <TextView
+            android:id="@+id/textSwipe"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp"
-            android:gravity="center">
+            android:text="Wische zum Steuern"
+            android:textSize="16sp"
+            android:layout_gravity="bottom|center_horizontal"
+            android:padding="16dp" />
 
-        <!-- Oben-Taste -->
-        <Button
-                android:id="@+id/buttonUp"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:text="↑" />
-
-        <!-- Links- und Rechts-Taste -->
-        <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-            <Button
-                    android:id="@+id/buttonLeft"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:text="←" />
-
-            <!-- Platzhalter -->
-            <View
-                    android:layout_width="80dp"
-                    android:layout_height="80dp" />
-
-            <Button
-                    android:id="@+id/buttonRight"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:text="→" />
-        </LinearLayout>
-
-        <!-- Unten-Taste -->
-        <Button
-                android:id="@+id/buttonDown"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:text="↓" />
-    </LinearLayout>
-
-</LinearLayout>
+</FrameLayout>
