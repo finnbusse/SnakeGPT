@@ -103,6 +103,12 @@ class GameView @JvmOverloads constructor(
         } else {
             snake.removeAt(snake.size - 1)
         }
+
+        // Am Ende der update() Methode
+        if (isGameOver) {
+            handler.removeCallbacks(updateRunnable)
+        }
+
     }
 
     private fun generateApple() {
@@ -141,4 +147,9 @@ class GameView @JvmOverloads constructor(
         super.onDetachedFromWindow()
         handler.removeCallbacks(updateRunnable)
     }
+
+    fun getScore(): Int {
+        return score
+    }
+
 }
