@@ -27,7 +27,7 @@ Collect points by eating apple on the screen, but watch out – don't crash into
 
 To install the game on your Android device, follow these steps:
 
-1. Download the latest APK file from the [Releases](https://github.com/finnbusse/snake/releases) section.
+1. Download the latest APK file from the [Releases](https://github.com/finnbusse/snakegpt/releases) section.
 2. Open the APK file on your device and follow the installation instructions.
 3. Have fun playing! 🐍🎮
 
