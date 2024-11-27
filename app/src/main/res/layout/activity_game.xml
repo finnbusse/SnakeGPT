@@ -9,7 +9,7 @@
             android:id="@+id/scoreTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Punkte: 0"
+            android:text="Score: 0"
             android:textSize="24sp"
             android:gravity="center"
             android:padding="16dp"
@@ -27,7 +27,7 @@
             android:id="@+id/textSwipe"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Wische zum Steuern"
+            android:text="Swipe to control"
             android:textSize="16sp"
             android:layout_gravity="bottom|center_horizontal"
             android:padding="16dp" />

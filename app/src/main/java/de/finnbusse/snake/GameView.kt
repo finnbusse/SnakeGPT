@@ -15,7 +15,7 @@ class GameView @JvmOverloads constructor(
 ) : View(context, attrs) {
 
     private val handler = Handler(Looper.getMainLooper())
-    private val updateDelay = 300L  // Aktualisierung alle 150 Millisekunden für flüssigere Bewegung
+    private val updateDelay = 275L  // Aktualisierung alle x Millisekunden für flüssigere Bewegung
     private var snake = mutableListOf<Pair<Int, Int>>()
     private var direction = Direction.RIGHT
     private var apple = Pair(5, 5)
@@ -26,8 +26,8 @@ class GameView @JvmOverloads constructor(
 
     private val paintSnake = Paint().apply { color = Color.BLUE } // Schlange ist jetzt Blau
     private val paintApple = Paint().apply { color = Color.RED }
-    private val paintLightGreen = Paint().apply { color = Color.parseColor("#A8D5BA") }
-    private val paintDarkGreen = Paint().apply { color = Color.parseColor("#6AA77D") }
+    private val paintLightGreen = Paint().apply { color = Color.parseColor("#A8D949") }
+    private val paintDarkGreen = Paint().apply { color = Color.parseColor("#8ECC39") }
 
     private var scoreChangeListener: OnScoreChangeListener? = null
 
